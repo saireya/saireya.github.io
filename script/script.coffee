@@ -123,13 +123,13 @@ $ ->
 				unsanitize(title)
 
 	# make table of contents
-	if ! isSlide
-		$.when(
-			$("nav").toc()
-		).then ->
-			# hyperlink inside file.
-			# tocのリンクを有効にするため、tocの処理が終わってから変換
-			$("a[href^='#']").attr "href", (i, v) -> loc + v
+	#if ! isSlide
+	#	$.when(
+	#		$("nav").toc()
+	#	).then ->
+	#		# hyperlink inside file.
+	#		# tocのリンクを有効にするため、tocの処理が終わってから変換
+	#		$("a[href^='#']").attr "href", (i, v) -> loc + v
 
 	# image file.
 	$("img").each ->
