@@ -1,0 +1,392 @@
+/**************************************************
+ * Common Style
+ **************************************************/
+
+@sidebarWidth: 150px;
+@fg: black;
+@bg: white;
+@r: 7px;
+
+@borderColor: #ccc;
+@borderWidth: 1px;
+@borderStyle: solid;
+
+body
+{
+	padding: 2%;
+	margin: 0 3% 0 3%;
+	font-family: sans-serif;
+	counter-reset: section;
+	color: @fg;
+	background-color: @bg;
+}
+
+.grad(@left)
+{
+	background-image: -moz-linear-gradient(left, @left, @bg);
+}
+
+// Heading
+h1
+{
+	font: inherit;
+	border-radius: @r;
+	border-bottom: @borderWidth dotted;
+	padding: 0;
+	//box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.head(@angle: 0, @l: 0.8)
+{
+	@base: hsl(120 * (@angle + 1), 1, @l);
+	.grad(lighten(@base, 15%));
+	border-color: @base;
+}
+
+main > h1
+{
+	border: @borderWidth solid;
+	margin: 0 -1%;
+	.head;
+}
+
+article > h1
+{
+	.head(1);
+	border-bottom-style: dashed;
+}
+
+.content > section > h1
+{
+	.head(2);
+	counter-reset:  subsection;
+	counter-increment: section;
+}
+
+.content > section > section > h1
+{
+	.head;
+	counter-reset:  subsubsection;
+	counter-increment: subsection;
+}
+
+.content > section > section > section > h1
+{
+	.head(2.5);
+	counter-increment: subsubsection;
+}
+
+// Text
+p
+{
+	margin: 4px auto;
+	text-align: justify;
+	text-indent: 1em;
+}
+
+
+// Link
+.link(@h:300)
+{
+	@base: hsl(@h, 1, 0.5);
+	color: @base;
+	border-bottom-color: @base;
+}
+
+a
+{
+	border-bottom: 1px dotted;
+	.link;
+	text-decoration: none;
+}
+
+// Figure
+figure
+{
+	display: block;
+	margin: auto;
+	text-align: center;
+}
+
+figcaption
+{
+	font-size: smaller;
+}
+
+
+// Object
+img
+{
+	display: inline;
+	max-width: 100%;
+}
+
+
+// List
+// http://web-dou.com/sample/dl.html
+@headBColor: #def;
+
+dl
+{
+	@dtWidth: 100px;
+	margin: 5px;
+	border: @borderWidth @borderStyle @borderColor;
+	border-radius: @r;
+	border-top-width: 0;
+	background-color: @headBColor;
+
+	dt
+	{
+		float: left;
+		clear: left;
+		width: @dtWidth;
+		padding: 5px;
+		border-top: @borderWidth @borderStyle @borderColor;
+		border-top-left-radius: @r;
+		font-family: sans-serif;
+	}
+
+	dd
+	{
+		padding: 5px;
+		border-top: @borderWidth @borderStyle @borderColor;
+		border-top-right-radius: @r;
+		margin-left: @dtWidth + 10px;
+		background-color: @bg;
+	}
+}
+
+ul, ol
+{
+	margin: 0.5% auto;
+}
+
+// Table
+table
+{
+	margin: auto;
+	background-color: @bg;
+
+	thead, tfoot, th
+	{
+		background-color: @headBColor;
+		color: @fg;
+		text-align: center;
+	}
+
+	th
+	{
+		font-style: normal;
+		font-family: sans-serif;
+		border-radius: @r;
+	}
+
+	tbody > tr
+	{
+		@bg: #fffaff;
+		color: @fg;
+		&:nth-child(odd)  { background-color: darken(@bg, 2.5%); }
+		&:nth-child(even) { background-color: @bg; }
+	}
+}
+
+// dirty hack to highlight implicit header row.
+// tbody > tr:first-child    { background-color: @headBColor; }
+
+
+// Table of Contents(jQuery toc)
+// http://usabilitypost.com/2011/04/19/pure-css-slideout-interface/
+nav
+{
+	@bg: hsl(0, 0, 0.2);
+	@fg: white;
+	@sep: darken(@bg, 20%);
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	background: @bg;
+	color: @fg;
+	box-shadow: inset -5px 0 5px 0 @sep;
+	font-size: small;
+	text-align: left;
+	padding-top: 20px;
+//	transition-duration: 0.3s;
+	&:before
+	{
+		content: "...";
+	}
+	&:hover
+	{
+		left: @sidebarWidth;
+		&:before
+		{
+			display: none;
+		}
+		ul
+		{
+			left: 0;
+		}
+	}
+
+	ul
+	{
+		position: fixed;
+		top: 0;
+		left: -@sidebarWidth;
+		width: @sidebarWidth;
+		height: 100%;
+		overflow-y: auto;
+		margin: 0;
+		padding: 0;
+		background: @bg;
+		list-style: none;
+		transition-duration: 0.3s;
+	}
+
+	li
+	{
+		padding: 5px 10px;
+	}
+
+	a
+	{
+		color: inherit;
+		display: block;
+		text-decoration: none;
+	}
+
+	.toc-head(@level)
+	{
+		font-size: 100% - 5% * @level;
+		padding-left: 10px * (@level + 1);
+	}
+	.toc-h2 { .toc-head(0); }
+	.toc-h3 { .toc-head(1); }
+	.toc-h4 { .toc-head(2); }
+
+	.toc-active
+	{
+		background: #336699;
+		box-shadow: inset -5px 0 10px -5px @sep;
+	}
+}
+
+
+/**************************************************
+ * Phrase Style
+ **************************************************/
+
+// Quotation
+figcaption.cite
+{
+	text-align: right;
+}
+
+// http://unformedbuilding.com/articles/styling-blockquote-with-css3/
+blockquote
+{
+	@g: darken(@bg, 26.5%);
+	position: relative;
+	padding: 0 10px 0 45px;
+	border: @borderWidth @borderStyle;
+	border-color: @g @bg @bg @g;
+	border-radius: @r;
+	background: darken(@bg, 5%);
+	quotes: none;
+	text-align: left;
+	// be back of nav
+	z-index: -1;
+
+	&:before
+	{
+		position: absolute;
+		top: -10px;
+		left: 25px;
+		width: 100px;
+		color: @g;
+		content: "Quote";
+		transform: rotate(90deg);
+		transform-origin: 0 50%;
+		font: oblique 400 1.3em serif;
+		text-shadow: 1px -1px 0 #fff;
+	}
+}
+
+// stave
+.st
+{
+	margin: 0.7em auto;
+	font-family: serif, monospace;
+}
+
+/**************************************************
+ * Chat Style
+ **************************************************/
+
+h2 a
+{
+	color: #9933ff;
+	border: 0;
+	font-size: small;
+	vertical-align: top;
+	text-decoration: none;
+}
+
+div.text
+{
+	margin: 2px auto;
+	font-family: sans-serif;
+	padding-left: 20px;
+}
+
+.s
+{
+	display: table-cell;
+}
+
+.by
+{
+	color: green;
+	display: table-cell;
+	padding-right: 5px;
+	&:after
+	{
+		content: ":";
+	}
+}
+
+
+//time
+time
+{
+	color: gray;
+	font-size: x-small;
+
+	&:before { content: '('; }
+	&:after  { content: ')'; }
+	del + &:before { content:  '(deleted at '; }
+	ins + &:before { content: '(inserted at '; }
+}
+
+.Silky, .Ratbeta, .Ratbeta_, .ratbeta, .yuki, .saireya1
+{
+	color: blue;
+}
+
+/**************************************************
+ * Diary Style
+ **************************************************/
+
+// Hiding text
+.hide
+{
+	color: transparent;
+	border-radius: @r;
+	background-color: #e0ffff;
+	&:hover
+	{
+		color: #9932cc;
+		background-color: inherit;
+	}
+}

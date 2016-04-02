@@ -1,0 +1,128 @@
+/**************************************************
+ * TeX Style
+ **************************************************/
+
+.MathJax_MathML
+{
+	// to prevent overlapping with following text
+	margin-right: 4px !important;
+}
+
+// custom item marker
+li[data-mark]
+{
+	list-style: none;
+	&:before
+	{
+		margin: auto 0.5em auto -1em;
+		content: attr(data-mark);
+	}
+}
+
+ol.cases
+{
+	list-style-type: none;
+	counter-reset: item;
+
+	& > li:before
+	{
+		content: "[" counter(item) "]";
+		counter-increment: item;
+		padding-right: 10px;
+	}
+}
+
+  .secnum(@type: decimal) { content: counter(section, @type) ". "; }
+ .ssecnum(@type: decimal) { content: counter(section, @type) "." counter(subsection) ". "; }
+.sssecnum(@type: decimal) { content: counter(section, @type) "." counter(subsection) "." counter(subsubsection) ". "; }
+
+article > section                     > h1.num:before {   .secnum; }
+article > section > section           > h1.num:before {  .ssecnum; }
+article > section > section > section > h1.num:before { .sssecnum; }
+
+@bg: white;
+.grad3(@center)
+{
+	background-image: -moz-linear-gradient(left, @bg, @center, @bg);
+}
+
+hr
+{
+	border: 0;
+	height: 1px;
+	.grad3(springgreen);
+
+	&.appendix
+	{
+		counter-reset: section;
+		.grad3(steelblue);
+	}
+}
+
+aside.content > section                     > h1.num:before { content: "付録" counter(section, upper-latin) ". "; }
+aside.content > section > section           > h1.num:before {  .ssecnum(upper-latin); }
+aside.content > section > section > section > h1.num:before { .sssecnum(upper-latin); }
+
+// Footnote
+ol.footnotesList, #bib
+{
+	font-size: 0.8em;
+	padding-top: 5px;
+
+	& > li
+	{
+		text-indent: -1.5em;
+		padding-left: 1.5em;
+		vertical-align: top;
+	}
+}
+
+a.footnoteLink
+{
+	border-width: 0;
+}
+
+a.footnoteBackref:extend(a.footnoteLink)
+{
+	padding-right: 0.25em;
+}
+
+.sublink(@h:300)
+{
+	@base: hsl(@h, 1, 0.5);
+	color: @base;
+	border-bottom-color: @base;
+	vertical-align: bottom;
+	font-size: small;
+}
+
+a.cite { .sublink(200); }
+a.ref  { .sublink(160); }
+
+.person
+{
+	@r: 7px;
+	@bg: #f0fff4;
+	@fg: black;
+	color: @fg;
+	border-radius: @r;
+	border: 1px solid darken(@bg, 50%);
+	background-color: @bg;
+}
+
+// plan
+div.bb
+{
+	border: 1px inset #00ff00;
+	background-color: #eeffee;
+}
+
+.multicols
+{
+	display: flex;
+
+	& > div
+	{
+		margin: auto 5px !important;
+	}
+}
