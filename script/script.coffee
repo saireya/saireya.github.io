@@ -78,7 +78,7 @@ csv2html = ($tb, sep = ",", quote = "\"") ->
 # 文書の読み込みが完了してから実行。
 $ ->
 	# footnote
-	$("main").footnotes()
+	#$("main").footnotes()
 
 	isSlide = $("main").hasClass("reveal")
 	$("#title").html($("#title").text().replace("\\\\", "<br/>"))
