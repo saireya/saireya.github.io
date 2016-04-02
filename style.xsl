@@ -15,14 +15,7 @@
   <html xmlns="http://www.w3.org/1999/xhtml">
    <head>
     <title><xsl:value-of select="$title" /></title>
-    <base href="file:///mnt/data/Dropbox/Script/Markup/" />
-    <script>
-     if (navigator.platform.indexOf("Win") != -1)
-     {
-//     document.getElementsByTagName('base')[0].href = 'file:///G:/Dropbox/Script/Markup/';
-       document.getElementsByTagName('base')[0].href = 'file:///C:/Users/1400053/Dropbox/Script/Markup/';
-     }
-    </script>
+    <base href="/" />
     <link rel="stylesheet/less" type="text/css" href="style.less" />
     <link rel="stylesheet/less" type="text/css" href="report.less" />
     <link rel="stylesheet" type="text/css" href="script/jquery-ui.css" />
