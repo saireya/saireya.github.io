@@ -152,16 +152,7 @@ $ ->
 	$code.each -> loadText($(@), dir + $(@).attr("src"))
 	if $code[0]
 		SyntaxHighlighter.autoloader(
-			'b2e  syntax/shBrushScheme.js'
-			'c    syntax/shBrushCpp.js'
-			'diff syntax/shBrushDiff.js'
-			'hs   syntax/shBrushHaskell.js'
-			'java syntax/shBrushJava.js'
 			'js   syntax/shBrushJScript.js'
-			'log  syntax/shBrushPlain.js'
-			'm    syntax/shBrushOctave.js'
-			'pde  syntax/shBrushProcessing.js'
-			'php  syntax/shBrushPhp.js'
 			'py   syntax/shBrushPython.js'
 			'R    syntax/shBrushR.js'
 			'rb   syntax/shBrushRuby.js'
