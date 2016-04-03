@@ -4,6 +4,7 @@
 - [CoffeeScript](http://coffeescript.org)
 - [jQuery](https://jquery.com)
 - [jQuery UI](http://jqueryui.com)
+- [SyntaxHighlighter](http://alexgorbatchev.com/SyntaxHighlighter)
 
 ## Apache License 2.0
 [https://opensource.org/licenses/Apache-2.0]
