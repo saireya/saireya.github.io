@@ -23,7 +23,6 @@
     <!-- jQuery, syntaxhighlighterなど他のスクリプトに依存されるものはasync,deferにしない -->
     <script src="script/jquery.js" />
     <script src="script/jquery-ui.js" async="async" />
-    <script src="script/jquery.footnotes.js" async="async" />
     <script src="script/jquery.csv.js" async="async" />
     <script src="syntax/xregexp.js" />
     <script src="syntax/shCore.js" />
