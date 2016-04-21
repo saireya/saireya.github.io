@@ -94,8 +94,6 @@
   </div>
  </xsl:template>
 
- <xsl:template match="alert"><strong><xsl:apply-templates /></strong></xsl:template>
-
  <xsl:template match="s">
   <!-- 見出しは出力しない -->
   <xsl:apply-templates />
