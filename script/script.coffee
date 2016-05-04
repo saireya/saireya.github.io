@@ -87,14 +87,13 @@ $ ->
 	$bib = $("#bib")
 	if $bib[0]
 		$.when(
-			$.ajax(dir + $bib.data("src")),
-			$.ajax("bib.xsl")
+			$.ajax(dir + $bib.data("src"), {"mimeType": "text/plain"}),
+			$.ajax("bib.xsl", {"mimeType": "text/plain"})
 		).then (r1, r2) ->
 			# r1[0]がxml, r2[0]がxsl
 			xsltProc = new XSLTProcessor()
 			p = new DOMParser()
-			#xsltProc.importStylesheet(p.parseFromString(r2[0], "text/xml"))
-			xsltProc.importStylesheet(r2[0])
+			xsltProc.importStylesheet(p.parseFromString(r2[0], "text/xml"))
 			$resultDocument = $(xsltProc.transformToDocument(p.parseFromString(r1[0], "text/xml")))
 			$bib.replaceWith($resultDocument.find("#bib"))
 			# thenは遅延実行なので、リンクを別に変換する必要がある
