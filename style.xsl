@@ -80,7 +80,7 @@
  <xsl:template match="img">
   <figure>
    <xsl:attribute name="id"><xsl:value-of select="@n" /></xsl:attribute>
-   <img>
+   <object>
     <xsl:attribute name="data-data"><xsl:value-of select="@src"/></xsl:attribute>
     <xsl:attribute name="title"><xsl:value-of select="@title"/></xsl:attribute>
     <xsl:if test="@scale">
@@ -88,7 +88,7 @@
      <xsl:attribute name="data-scale"><xsl:value-of select="@scale"/></xsl:attribute>
     </xsl:if>
     <xsl:value-of select="@alt"/>
-   </img>
+   </object>
    <figcaption>
     <xsl:if test="@n">
      <a class="ref">

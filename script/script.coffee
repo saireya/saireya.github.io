@@ -132,17 +132,19 @@ $ ->
 	#		$("a[href^='#']").attr "href", (i, v) -> loc + v
 
 	# image file.
-	$("img").each ->
+	# imgタグを使うと、SVGを表示したとき、SVGからリンクしている外部ファイルを表示できない
+	$("object").each ->
 		# emulating 'zoom' property for Firefox
 		$o = $(@)
 		i = new Image()
 		# 属性名をdata-srcとすると、処理中になぜか読み込まれてしまう
+		# Imageオブジェクトで読み込んでおくことで、ブラウザに先に画像を取得させる
 		i.src = dir + $o.data("data")
 		i.onload = () ->
 			scale = if $o.is("[data-scale]") then $o.data("scale") else 1.0
 			$o.height(i.naturalHeight * scale * (if isSlide then 2.0 else 1.0))
 				# 先にdataを書き換えると表示してからサイズ変更されるので、後回しに
-				.attr "src", i.src
+				.attr "data", i.src
 		i.onerror = () ->
 			console.log("load error: " + i.src)
 
