@@ -16,6 +16,13 @@
    <head>
     <title><xsl:value-of select="$title" /></title>
     <base href="/" />
+    <script>
+     less =
+     {
+       async: true,
+       fileAsync: true,
+     };
+    </script>
     <link rel="stylesheet/less" type="text/css" href="style.less" />
     <link rel="stylesheet/less" type="text/css" href="report.less" />
     <link rel="stylesheet" type="text/css" href="script/jquery-ui.css" />
