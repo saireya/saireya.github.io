@@ -78,7 +78,6 @@
    <!-- contents of slide -->
    <div class="stretch" style="display: flex; align-items: center; justify-content: center; padding-bottom: 5%">
     <div style="width: 99%">
-    <div>
      <xsl:apply-templates />
     </div>
    </div>
