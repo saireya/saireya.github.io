@@ -76,8 +76,8 @@
     </xsl:choose>
    </h3>
    <!-- contents of slide -->
-   <!--<div class="stretch" style="display: table-cell; vertical-align: middle; width: inherit">-->
-   <div class="stretch" style="display: flex; align-items: center; justify-content: center">
+   <div class="stretch" style="display: flex; align-items: center; justify-content: center; padding-bottom: 5%">
+    <div style="width: 99%">
     <div>
      <xsl:apply-templates />
     </div>
