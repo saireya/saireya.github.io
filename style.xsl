@@ -20,7 +20,6 @@
      less =
      {
        async: true,
-       fileAsync: true,
      };
     </script>
     <link rel="stylesheet/less" type="text/css" href="style.less" />
