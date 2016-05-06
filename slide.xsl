@@ -86,9 +86,9 @@
    <h6>
     <xsl:choose>
      <!-- FIXME: insert(sub)sectionがいずれも「現在の節見出し」を表示 -->
-     <xsl:when test="@title='\insertsection'"><xsl:value-of select="../@h"/></xsl:when>
-     <xsl:when test="@title='\insertsubsection'"><xsl:value-of select="../@h"/></xsl:when>
-     <xsl:when test="@title='\insertsubsubsection'"><xsl:value-of select="../@h"/></xsl:when>
+     <xsl:when test="@title='\insertsection'"><xsl:value-of select="../../@h"/></xsl:when>
+     <xsl:when test="@title='\insertsubsection'"><xsl:value-of select="../../@h"/></xsl:when>
+     <xsl:when test="@title='\insertsubsubsection'"><xsl:value-of select="../../@h"/></xsl:when>
      <xsl:otherwise><xsl:value-of select="@title"/></xsl:otherwise>
     </xsl:choose>
    </h6>
