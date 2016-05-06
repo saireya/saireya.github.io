@@ -83,9 +83,15 @@
  <xsl:template match="block">
   <div>
    <xsl:attribute name="class">block <xsl:value-of select="@class"/></xsl:attribute>
-   <xsl:if test="@title!='\insertsection' and @title!='\insertsubsection'">
-    <h6><xsl:value-of select="@title"/></h6>
-   </xsl:if>
+   <h6>
+    <xsl:choose>
+     <!-- FIXME: insert(sub)sectionがいずれも「現在の節見出し」を表示 -->
+     <xsl:when test="@title='\insertsection'"><xsl:value-of select="../@h"/></xsl:when>
+     <xsl:when test="@title='\insertsubsection'"><xsl:value-of select="../@h"/></xsl:when>
+     <xsl:when test="@title='\insertsubsubsection'"><xsl:value-of select="../@h"/></xsl:when>
+     <xsl:otherwise><xsl:value-of select="@title"/></xsl:otherwise>
+    </xsl:choose>
+   </h6>
    <xsl:apply-templates />
   </div>
  </xsl:template>
