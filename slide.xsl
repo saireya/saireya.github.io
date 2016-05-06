@@ -76,11 +76,7 @@
     </xsl:choose>
    </h3>
    <!-- contents of slide -->
-   <div class="stretch" style="display: flex; align-items: center; justify-content: center">
-    <div style="width: 99%">
-     <xsl:apply-templates />
-    </div>
-   </div>
+   <div class="stretch"><xsl:apply-templates /></div>
   </section>
  </xsl:template>
 

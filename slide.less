@@ -16,6 +16,17 @@
 {
 	// 余白も利用する
 	padding: 0 !important;
+
+	& > div
+	{
+		display: flex;
+		// ブロックを縦方向に並べる
+		flex-direction: column;
+		// ブロックの横幅は一杯に引き延ばす
+		align-items: stretch;
+		// ブロックは縦方向には中央寄せする
+		justify-content: center;
+	}
 }
 
 h1, h3, h6
@@ -109,9 +120,9 @@ p
 
 .block
 {
-	@m: 1%;
+	@m: 1.5%;
 	@r: 7px;
-	margin: @m auto !important;
+	margin: @m 0.5% !important;
 	padding: 0 2px !important;
 	font-family: inherit;
 	text-align:left;
