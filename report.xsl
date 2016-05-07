@@ -89,6 +89,9 @@
  <xsl:template match="multicols">
   <div>
    <xsl:choose>
+    <xsl:when test="@flex">
+     <xsl:attribute name="style">display: flex; align-items: center; justify-content: center</xsl:attribute>
+    </xsl:when>
     <xsl:when test="@num">
      <xsl:attribute name="style">-moz-column-count: <xsl:value-of select="@num"/>; -webkit-column-count: <xsl:value-of select="@num"/></xsl:attribute>
     </xsl:when>
