@@ -2,6 +2,8 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:str="http://exslt.org/strings" extension-element-prefixes="str">
  <xsl:output method="text" encoding="utf-8"/>
+ <!-- To get correct position() of nodes -->
+ <xsl:strip-space elements="*"/>
 
  <xsl:template name="root">
   <xsl:param name="title"></xsl:param>
@@ -40,16 +42,18 @@
  <xsl:template match="ol/li">
   <xsl:text>0. </xsl:text>
   <xsl:apply-templates />
+  <xsl:text>&#10;</xsl:text>
  </xsl:template>
 
  <xsl:template match="ul/li">
   <xsl:text>- </xsl:text>
   <xsl:apply-templates />
+  <xsl:text>&#10;</xsl:text>
  </xsl:template>
 
  <xsl:template match="p">
   <xsl:apply-templates />
-  <xsl:text>&#10;&#10;</xsl:text>
+  <xsl:text>&#10;</xsl:text>
  </xsl:template>
 
  <xsl:template match="em">
@@ -67,6 +71,7 @@
  <!-- heading -->
  <xsl:template name="heading">
   <xsl:param name="level"/>
+  <xsl:text>&#10;</xsl:text>
   <xsl:value-of select="$level"/>
   <xsl:text>## </xsl:text>
   <xsl:value-of select="@h"/>
