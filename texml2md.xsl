@@ -30,7 +30,7 @@
   <xsl:value-of select="@title"/>
   <xsl:text>](</xsl:text>
   <xsl:value-of select="@src"/>
-  <xsl:text>)&#10;</xsl:text>
+  <xsl:text>)&#10;&#10;</xsl:text>
  </xsl:template>
 
  <xsl:template match="blockquote">
