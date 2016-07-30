@@ -36,7 +36,7 @@
    <xsl:text>)</xsl:text>
   </xsl:if>
   <xsl:if test="b:publisher">(<xsl:value-of select='b:publisher'/>)</xsl:if>
-  <xsl:text>"&#10;</xsl:text>
+  <xsl:text>"&#10;&#10;</xsl:text>
  </xsl:template>
 
  <xsl:template match="b:author | b:editor">
