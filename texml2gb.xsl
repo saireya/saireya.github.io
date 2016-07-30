@@ -33,6 +33,7 @@
  <xsl:template match="article/s | article/multicols/s | appendix/s">
   <exsl:document href="ch_{position()}.md" method="text" encoding="utf-8">
    <xsl:call-template name="heading"/>
+   <xsl:text>&#10;!INCLUDE "bib.md"&#10;</xsl:text>
   </exsl:document>
  </xsl:template>
 </xsl:stylesheet>
