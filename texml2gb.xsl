@@ -22,8 +22,8 @@
      <xsl:value-of select="@h"/>
      <xsl:text>](ch_</xsl:text>
      <xsl:value-of select="count(../preceding-sibling::*)+1"/>
-     <xsl:text>.md#s</xsl:text>
-     <xsl:value-of select="position()"/>
+     <xsl:text>.md#</xsl:text>
+     <xsl:value-of select="@h"/>
      <xsl:text>)&#10;</xsl:text>
     </xsl:for-each>
    </xsl:for-each>
