@@ -16,7 +16,7 @@
    <xsl:when test="b:url"><xsl:value-of select="b:url"/></xsl:when>
    <xsl:when test="b:isbn">http://amazon.jp/dp/<xsl:value-of select="b:isbn"/></xsl:when>
    <xsl:when test="b:doi">http://dx.doi.org/<xsl:value-of select="b:doi"/></xsl:when>
-   <xsl:otherwise>https://scholar.google.co.jp/scholar?q=<xsl:value-of select="translate(b:author, ' ', '&#160;')"/>,<xsl:value-of select="translate(b:title, ' ()', '&#160;')"/></xsl:otherwise>
+   <xsl:otherwise>https://scholar.google.co.jp/scholar?q=<xsl:value-of select="translate(b:author, ' ', '')"/>,<xsl:value-of select="translate(b:title, ' ()', '')"/></xsl:otherwise>
   </xsl:choose>
   <xsl:text>" "</xsl:text>
   <xsl:apply-templates select='b:author'/><xsl:apply-templates select='b:editor'/>
