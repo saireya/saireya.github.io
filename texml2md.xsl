@@ -24,7 +24,7 @@
  </xsl:template>
 
  <xsl:template match="img">
-  <xsl:text>![Figure </xsl:text>
+  <xsl:text>![</xsl:text>
   <xsl:value-of select="@n"/>
   <xsl:text>. </xsl:text>
   <xsl:value-of select="@title"/>
