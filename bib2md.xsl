@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:b="http://bibtexml.sf.net/" xmlns:xi="http://www.w3.org/2001/XInclude">
  <xsl:output method="text" encoding="utf-8"/>
+ <!-- To remove line breaks -->
+ <xsl:strip-space elements="*"/>
 
  <xsl:template match="/">
   <xsl:apply-templates/>
@@ -34,7 +36,7 @@
    <xsl:text>)</xsl:text>
   </xsl:if>
   <xsl:if test="b:publisher">(<xsl:value-of select='b:publisher'/>)</xsl:if>
-  <xsl:text>"</xsl:text>
+  <xsl:text>"&#10;</xsl:text>
  </xsl:template>
 
  <xsl:template match="b:author | b:editor">
