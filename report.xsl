@@ -145,6 +145,6 @@
    <xsl:attribute name="class">block <xsl:value-of select="@class"/></xsl:attribute>
    <h6><xsl:value-of select="@h"/></h6>
    <xsl:apply-templates />
-  </xsl:element>
+  </aside>
  </xsl:template>
 </xsl:stylesheet>
