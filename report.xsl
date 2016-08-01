@@ -139,4 +139,12 @@
    </xsl:when>
   </xsl:choose>
  </xsl:template>
+
+ <xsl:template match="aside">
+  <aside>
+   <xsl:attribute name="class">block <xsl:value-of select="@class"/></xsl:attribute>
+   <h6><xsl:value-of select="@h"/></h6>
+   <xsl:apply-templates />
+  </xsl:element>
+ </xsl:template>
 </xsl:stylesheet>

@@ -36,4 +36,14 @@
    <xsl:text>&#10;!INCLUDE "bib.md"&#10;</xsl:text>
   </exsl:document>
  </xsl:template>
+
+ <xsl:template match="aside">
+  <xsl:text>&#10;&gt; **</xsl:text>
+  <xsl:value-of select="@class"/>
+  <xsl:text>** </xsl:text>
+  <xsl:value-of select="@h">
+  <xsl:text>&#10;</xsl:text>
+  <xsl:apply-templates />
+  <xsl:text>&#10;</xsl:text>
+ </xsl:template>
 </xsl:stylesheet>
