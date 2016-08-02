@@ -38,9 +38,9 @@
  </xsl:template>
 
  <xsl:template match="aside">
-  <xsl:text>&#10;&gt; **</xsl:text>
+  <xsl:text>&#10;&gt; #### </xsl:text>
   <xsl:value-of select="@class"/>
-  <xsl:text>** </xsl:text>
+  <xsl:text>::</xsl:text>
   <xsl:value-of select="@h"/>
   <xsl:text>&#10;</xsl:text>
   <xsl:for-each select="p">
