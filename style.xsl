@@ -24,7 +24,7 @@
 //       ? 'G:'
          ? 'C:/Users/1400053'
          : "mnt/data";
-       document.getElementsByTagName('base')[0].href = "file:///" + baseurl + "/Dropbox/Script/Markup/";
+       document.getElementsByTagName('base')[0].href = "file:///" + baseurl + "/Dropbox/Document/Education/Informatics/markup/";
      }
      less =
      {
