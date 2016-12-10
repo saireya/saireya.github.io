@@ -17,6 +17,15 @@
     <title><xsl:value-of select="$title" /></title>
     <base href="/" />
     <script>
+     // private settings
+     if (location.protocol == "file:")
+     {
+       baseurl = (navigator.platform.indexOf("Win") != -1)
+//       ? 'G:'
+         ? 'C:/Users/1400053'
+         : "mnt/data";
+       document.getElementsByTagName('base')[0].href = "file:///" + baseurl + "/Dropbox/Script/Markup/";
+     }
      less =
      {
        async: true,
