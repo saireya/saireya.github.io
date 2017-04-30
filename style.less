@@ -43,34 +43,34 @@ h1
 	border-color: @base;
 }
 
-main > h1
+h1
 {
 	border: @borderWidth solid;
-	margin: 0 -1%;
+	margin: 5px -1%;
 	.head;
 }
 
-article > h1
+h1
 {
 	.head(1);
 	border-bottom-style: dashed;
 }
 
-.content > section > h1
+section > h1
 {
 	.head(2);
 	counter-reset:  subsection;
 	counter-increment: section;
 }
 
-.content > section > section > h1
+section > section > h1
 {
 	.head;
 	counter-reset:  subsubsection;
 	counter-increment: subsection;
 }
 
-.content > section > section > section > h1
+section > section > section > h1
 {
 	.head(2.5);
 	counter-increment: subsubsection;

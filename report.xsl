@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xi="http://www.w3.org/2001/XInclude" exclude-result-prefixes="xi">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xi="http://www.w3.org/2001/XInclude" exclude-result-prefixes="xi">
  <xsl:import href="style.xsl" />
 
  <xsl:template name="head-module">
@@ -23,7 +23,7 @@
      \newcommand{\mathbfit}[1]{\boldsymbol{#1}}
    \]
   </div>
-  <nav />
+  <nav data-type="toc"/>
  </xsl:template>
 
  <xsl:template name="biblist">
@@ -38,12 +38,10 @@
  <xsl:template name="body-footer">
   <!-- Reference -->
   <xsl:if test='@bib'>
-   <aside class="content">
-    <section>
-     <h1>参考文献</h1>
-     <xsl:call-template name="biblist"/>
-    </section>
-   </aside>
+   <section data-type="bibliography">
+    <h1>参考文献</h1>
+    <xsl:call-template name="biblist"/>
+   </section>
   </xsl:if>
  </xsl:template>
 
@@ -80,6 +78,42 @@
    </h1>
    <xsl:apply-templates />
   </section>
+ </xsl:template>
+
+ <!-- heading -->
+ <xsl:template name="heading">
+  <xsl:param name="level"/>
+  <xsl:param name="type"/>
+  <section>
+   <xsl:attribute name="data-type"><xsl:value-of select="$type"/></xsl:attribute>
+   <xsl:element name="h{$level}">
+    <xsl:attribute name="class">num</xsl:attribute>
+    <xsl:if test="@n"><xsl:attribute name="id"><xsl:value-of select="@n"/></xsl:attribute></xsl:if>
+    <xsl:value-of select="@h"/>
+   </xsl:element>
+   <xsl:apply-templates />
+  </section>
+ </xsl:template>
+
+ <xsl:template match="article/s | article/multicols/s | appendix/s">
+  <xsl:call-template name="heading">
+   <xsl:with-param name="type">chapter</xsl:with-param>
+   <xsl:with-param name="level">1</xsl:with-param>
+  </xsl:call-template>
+ </xsl:template>
+
+ <xsl:template match="article/s/s | article/multicols/s/s | appendix/s/s">
+  <xsl:call-template name="heading">
+   <xsl:with-param name="type">sect1</xsl:with-param>
+   <xsl:with-param name="level">1</xsl:with-param>
+  </xsl:call-template>
+ </xsl:template>
+
+ <xsl:template match="article/s/s/s | article/multicols/s/s/s | appendix/s/s/s">
+  <xsl:call-template name="heading">
+   <xsl:with-param name="type">sect2</xsl:with-param>
+   <xsl:with-param name="level">2</xsl:with-param>
+  </xsl:call-template>
  </xsl:template>
 
  <xsl:template match="u"   ><span style="text-decoration: underline"><xsl:apply-templates /></span></xsl:template>

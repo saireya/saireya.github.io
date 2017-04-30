@@ -36,9 +36,9 @@ ol.cases
  .ssecnum(@type: decimal) { content: counter(section, @type) "." counter(subsection) ". "; }
 .sssecnum(@type: decimal) { content: counter(section, @type) "." counter(subsection) "." counter(subsubsection) ". "; }
 
-article > section                     > h1.num:before {   .secnum; }
-article > section > section           > h1.num:before {  .ssecnum; }
-article > section > section > section > h1.num:before { .sssecnum; }
+section                     > h1.num:before {   .secnum; }
+section > section           > h1.num:before {  .ssecnum; }
+section > section > section > h1.num:before { .sssecnum; }
 
 @bg: white;
 .grad3(@center)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:str="http://exslt.org/strings" extension-element-prefixes="str">
  <xsl:output method="html" version="5" doctype-system="about:legacy-compat" encoding="utf-8" indent="yes" />
 
@@ -12,7 +12,7 @@
  <xsl:template name="root">
   <xsl:param name="title">Log</xsl:param>
 
-  <html xmlns="http://www.w3.org/1999/xhtml">
+  <html>
    <head>
     <title><xsl:value-of select="$title" /></title>
     <base href="/" />
@@ -50,17 +50,15 @@
     <script type="text/coffeescript" src="script/script.coffee"/>
     <xsl:call-template name="head-footer" />
    </head>
-   <body>
+   <body data-type="book">
     <xsl:call-template name="body-header" />
-    <main>
-     <xsl:if test='@slide=1'>
-      <xsl:attribute name="class">reveal</xsl:attribute>
-     </xsl:if>
-     <xsl:if test='@slide!=1'>
-     <h1><xsl:value-of select="$title" /></h1>
-     </xsl:if>
-     <xsl:apply-templates/>
-    </main>
+    <xsl:if test='@slide=1'>
+     <xsl:attribute name="class">reveal</xsl:attribute>
+    </xsl:if>
+    <xsl:if test='@slide!=1'>
+    <h1><xsl:value-of select="$title" /></h1>
+    </xsl:if>
+    <xsl:apply-templates/>
 
     <xsl:call-template name="body-footer" />
    </body>
@@ -79,14 +77,12 @@
  </xsl:template>
 
  <xsl:template match="article">
-  <article class="content">
-   <xsl:apply-templates/>
-   <aside>
-    <ol class="footnotesList">
-     <xsl:attribute name="id">autoFootnotes<xsl:value-of select="position() div 2 - 1"/></xsl:attribute>
-    </ol>
-   </aside>
-  </article>
+  <xsl:apply-templates/>
+  <aside>
+   <ol class="footnotesList">
+    <xsl:attribute name="id">autoFootnotes<xsl:value-of select="position() div 2 - 1"/></xsl:attribute>
+   </ol>
+  </aside>
  </xsl:template>
 
  <xsl:template match="hide"><span class="hide"    ><xsl:apply-templates /></span></xsl:template>
