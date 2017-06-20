@@ -92,7 +92,7 @@
   <figure>
    <xsl:attribute name="id"><xsl:value-of select="@n" /></xsl:attribute>
    <object>
-    <xsl:attribute name="data-data"><xsl:value-of select="@src"/></xsl:attribute>
+    <xsl:attribute name="data"><xsl:value-of select="@src"/></xsl:attribute>
     <xsl:attribute name="type">
      <!-- object要素ではdata属性かtype属性が必須で、type属性がないとChromeが正しく読み込めないので、type属性を指定 -->
      <xsl:choose>
