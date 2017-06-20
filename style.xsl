@@ -113,7 +113,8 @@
      <a class="ref">
       <xsl:attribute name="href">#<xsl:value-of select="@n"/></xsl:attribute>
       <xsl:value-of select="@n"/>
-     </a>:
+     </a>
+     <xsl:text>: </xsl:text>
     </xsl:if>
     <xsl:value-of select="@title"/>
    </figcaption>
