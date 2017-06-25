@@ -22,7 +22,7 @@ linkconv = ($x) ->
 	$x.find("a").attr "href", (i, v) ->
 		replaceArray v,
 			"^urn:isbn:": "http://www.amazon.co.jp/o/ASIN/",
-			"^doi:":      "http://dx.doi.org/",
+			"^doi:":      "https://doi.org/",
 			"^cinii:":    "http://ci.nii.ac.jp/naid/"
 
 # table.tabular($tb)内に記述されたcsvをhtmlへ変換
