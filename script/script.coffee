@@ -136,7 +136,7 @@ $ ->
 		i = new Image()
 		# 属性名をdata-srcとすると、処理中になぜか読み込まれてしまう
 		# Imageオブジェクトで読み込んでおくことで、ブラウザに先に画像を取得させる
-		i.src = dir + $o.data("data")
+		i.src = dir + $o.attr("data")
 		i.onload = () ->
 			scale = if $o.is("[data-scale]") then $o.data("scale") else 1.0
 			$o.height(i.naturalHeight * scale * (if isSlide then 2.0 else 1.0))
