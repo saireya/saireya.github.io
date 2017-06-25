@@ -52,14 +52,7 @@
    </head>
    <body data-type="book">
     <xsl:call-template name="body-header" />
-    <xsl:if test='@slide=1'>
-     <xsl:attribute name="class">reveal</xsl:attribute>
-    </xsl:if>
-    <xsl:if test='@slide!=1'>
-    <h1><xsl:value-of select="$title" /></h1>
-    </xsl:if>
     <xsl:apply-templates/>
-
     <xsl:call-template name="body-footer" />
    </body>
   </html>

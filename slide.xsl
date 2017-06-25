@@ -31,6 +31,12 @@
  </xsl:template>
 
  <xsl:template name="body-header">
+  <xsl:if test='/log/@slide=1'>
+   <xsl:attribute name="class">reveal</xsl:attribute>
+  </xsl:if>
+  <xsl:if test='/log/@slide!=1'>
+   <h1><xsl:value-of select="$title" /></h1>
+  </xsl:if>
   <div id="macro" style="display: none">
    \[
      \newcommand{\mathbfit}[1]{\boldsymbol{#1}}
