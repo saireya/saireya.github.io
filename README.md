@@ -7,6 +7,9 @@
 - [情報科学習指導案](https://www.gitbook.com/book/saireya/plan-informatics): 単元別の指導案・ワークシート・授業用スライドなどです。
 - [読書メモ](https://www.gitbook.com/book/saireya/record-of-reading): 情報学系書籍の読書メモです。
 
+## Scripts
+- [eLaws2ePub](https://github.com/saireya/elaws2epub): e-Laws準拠の法令XMLデータから電子書籍ファイルを生成
+
 ## Links
 - [GitHub](https://github.com/saireya): GitBookや授業スライドのソース
 - [Scribd](https://www.scribd.com/saireya): 論文PDF・ポスター
