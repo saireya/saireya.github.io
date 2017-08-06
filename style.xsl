@@ -54,6 +54,7 @@
     <xsl:call-template name="body-header" />
     <xsl:apply-templates/>
     <xsl:call-template name="body-footer" />
+    <section data-type="index"/>
    </body>
   </html>
  </xsl:template>
@@ -164,7 +165,12 @@
    <xsl:apply-templates />
   </xsl:element>
  </xsl:template>
- <xsl:template match="alert"><strong><xsl:apply-templates /></strong></xsl:template>
+ <xsl:template match="alert">
+  <strong><xsl:apply-templates /></strong>
+  <a data-type="indexterm">
+   <xsl:attribute name="data-primary"><xsl:apply-templates /></xsl:attribute>
+  </a>
+ </xsl:template>
 
  <xsl:template match="s">
   <section>

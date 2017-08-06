@@ -59,8 +59,8 @@
 
  <!-- reference -->
  <xsl:template match="l"><a><xsl:attribute name="id"><xsl:value-of select="@n" /></xsl:attribute></a></xsl:template>
- <xsl:template match="r"><a class="ref"><xsl:attribute name="href">#<xsl:value-of select="@n" /></xsl:attribute><xsl:value-of select="@n" /></a></xsl:template>
- <xsl:template match="cite"><a class="cite"><xsl:attribute name="href">#cite:<xsl:value-of select="@id"/></xsl:attribute>[cite:<xsl:value-of select="@id"/>]</a></xsl:template>
+ <xsl:template match="r"><a class="ref" data-type="xref"><xsl:attribute name="href">#<xsl:value-of select="@n" /></xsl:attribute><xsl:value-of select="@n" /></a></xsl:template>
+ <xsl:template match="cite"><a class="cite" data-type="xref"><xsl:attribute name="href">#cite:<xsl:value-of select="@id"/></xsl:attribute>[cite:<xsl:value-of select="@id"/>]</a></xsl:template>
 
  <xsl:template match="h | hh | hhh">
   <xsl:element name="h{string-length(name()) + 2}">
@@ -175,7 +175,7 @@
  </xsl:template>
 
  <xsl:template match="aside">
-  <aside>
+  <aside data-type="tip">
    <xsl:attribute name="class">block <xsl:value-of select="@class"/></xsl:attribute>
    <h6><xsl:value-of select="@h"/></h6>
    <xsl:apply-templates />
