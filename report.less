@@ -112,7 +112,7 @@ a.ref  { .sublink(160); }
 
 .grad(@left)
 {
-	background-image: linear-gradient(to right, @left, lighten(@left, 50%));
+	background-image: linear-gradient(to right, @left, lighten(@left, 40%));
 }
 
 // 0: blue, 1: red, 2; green
@@ -152,13 +152,13 @@ a.ref  { .sublink(160); }
 .block
 {
 	@r: 7px;
-	margin: 1.5% 0.5% !important;
+	margin: 2% 0.5% !important;
 	padding: 0 2px !important;
 	font-family: inherit;
 	text-align:left;
 	border-radius: @r;
 	//Chromeだと印刷時に影が黒くなってしまう
-	//box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 
 	// ブロックの見出し
 	h6
@@ -166,7 +166,6 @@ a.ref  { .sublink(160); }
 		border-radius: @r @r 0 0;
 		margin: 0 -2px 1% -2px;
 		text-indent: 0.5em;
-		line-height: 1.5em;
 		// 見出しは白抜きで
 		color: white !important;
 		// 文字を初期設定より細く
