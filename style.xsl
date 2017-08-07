@@ -2,6 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:str="http://exslt.org/strings" extension-element-prefixes="str">
  <xsl:output method="html" version="5" doctype-system="about:legacy-compat" encoding="utf-8" indent="yes" />
+ <xsl:strip-space elements="*"/>
 
  <!-- template -->
  <xsl:template name="head-module"/>
@@ -13,6 +14,7 @@
   <xsl:param name="title">Log</xsl:param>
 
   <html>
+   <xsl:text>&#10;</xsl:text>
    <head>
     <title><xsl:value-of select="$title" /></title>
     <base href="/" />
@@ -50,11 +52,14 @@
     <script type="text/coffeescript" src="script/script.coffee"/>
     <xsl:call-template name="head-footer" />
    </head>
+   <xsl:text>&#10;</xsl:text>
    <body data-type="book">
+    <xsl:text>&#10;</xsl:text>
     <xsl:call-template name="body-header" />
     <xsl:apply-templates/>
     <xsl:call-template name="body-footer" />
     <section data-type="index"/>
+    <xsl:text>&#10;</xsl:text>
    </body>
   </html>
  </xsl:template>
@@ -159,7 +164,14 @@
   <li><xsl:if test="@mark"><xsl:attribute name="data-mark"><xsl:value-of select="@mark"/></xsl:attribute></xsl:if><xsl:apply-templates /></li>
  </xsl:template>
 
- <xsl:template match="p | br | ul | ol | dl | dt | dd | table | tr | td | em | strong | hr">
+ <xsl:template match="p | br | ul | ol | dl | dt | dd | table | tr | hr">
+  <xsl:element name="{name()}">
+   <xsl:if test="@class"><xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute></xsl:if>
+   <xsl:apply-templates />
+  </xsl:element>
+  <xsl:text>&#10;</xsl:text>
+ </xsl:template>
+ <xsl:template match="td | em | strong">
   <xsl:element name="{name()}">
    <xsl:if test="@class"><xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute></xsl:if>
    <xsl:apply-templates />

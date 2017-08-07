@@ -58,9 +58,15 @@
  </xsl:template>
 
  <!-- reference -->
- <xsl:template match="l"><a><xsl:attribute name="id"><xsl:value-of select="@n" /></xsl:attribute></a></xsl:template>
- <xsl:template match="r"><a class="ref" data-type="xref"><xsl:attribute name="href">#<xsl:value-of select="@n" /></xsl:attribute><xsl:value-of select="@n" /></a></xsl:template>
- <xsl:template match="cite"><a class="cite" data-type="xref"><xsl:attribute name="href">#cite:<xsl:value-of select="@id"/></xsl:attribute>[cite:<xsl:value-of select="@id"/>]</a></xsl:template>
+ <xsl:template match="l">
+  <a><xsl:attribute name="id"><xsl:value-of select="@n" /></xsl:attribute></a>
+ </xsl:template>
+ <xsl:template match="r">
+  <a class="ref" data-type="xref"><xsl:attribute name="href">#<xsl:value-of select="@n" /></xsl:attribute><xsl:value-of select="@n" /></a>
+ </xsl:template>
+ <xsl:template match="cite">
+  <a class="cite" data-type="xref"><xsl:attribute name="href">#cite:<xsl:value-of select="@id"/></xsl:attribute>[cite:<xsl:value-of select="@id"/>]</a>
+ </xsl:template>
 
  <xsl:template match="h | hh | hhh">
   <xsl:element name="h{string-length(name()) + 2}">
@@ -76,8 +82,10 @@
     <xsl:if test="@n"><xsl:attribute name="id"><xsl:value-of select="@n"/></xsl:attribute></xsl:if>
     <xsl:value-of select="@h"/>
    </h1>
+   <xsl:text>&#10;</xsl:text>
    <xsl:apply-templates />
   </section>
+  <xsl:text>&#10;</xsl:text>
  </xsl:template>
 
  <!-- heading -->
@@ -91,8 +99,10 @@
     <xsl:if test="@n"><xsl:attribute name="id"><xsl:value-of select="@n"/></xsl:attribute></xsl:if>
     <xsl:value-of select="@h"/>
    </xsl:element>
+   <xsl:text>&#10;</xsl:text>
    <xsl:apply-templates />
   </section>
+  <xsl:text>&#10;</xsl:text>
  </xsl:template>
 
  <xsl:template match="article/s | article/multicols/s | appendix/s">
