@@ -1,4 +1,5 @@
 # saireya.github.io
+[全高情研2017発表ポスター・資料など](https://saireya.gitbooks.io/thesis/content/2017zen-copyright/)
 
 ## [GitBook](https://www.gitbook.com/@saireya)
 
