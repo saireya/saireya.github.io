@@ -26,6 +26,12 @@ linkconv = ($x) ->
 			"^urn:isbn:": "http://www.amazon.co.jp/o/ASIN/",
 			"^doi:":      "https://doi.org/",
 			"^cinii:":    "http://ci.nii.ac.jp/naid/"
+linkconv_v = (x) ->
+	Array.forEach x.getElementsByTagName("a"), (e) ->
+		e.href = replaceArray e.href,
+			"^urn:isbn:": "http://www.amazon.co.jp/o/ASIN/",
+			"^doi:":      "https://doi.org/",
+			"^cinii:":    "http://ci.nii.ac.jp/naid/"
 
 # table.tabular($tb)内に記述されたcsvをhtmlへ変換
 csv2html = ($tb, sep = ",", quote = "\"") ->
@@ -83,7 +89,7 @@ $ ->
 	$("#title").html($("#title").text().replace("\\\\", "<br/>"))
 
 	# BibTeXML
-	bib = document.querySelector("#bib")
+	bib = document.getElementById("bib")
 	if bib
 		fetch(dir + bib.dataset.src)
 		.then (r) ->
@@ -98,9 +104,9 @@ $ ->
 				p = new DOMParser()
 				xsltProc.importStylesheet(p.parseFromString(r2, "text/xml"))
 				resultDocument = xsltProc.transformToDocument(p.parseFromString(r1, "text/xml"))
-				bib.replaceWith(resultDocument.querySelector("#bib"))
+				bib.replaceWith(resultDocument.getElementById("bib"))
 				# thenは遅延実行なので、リンクを別に変換する必要がある
-				# linkconv($bib)
+				linkconv_v(bib)
 	# リンクを変換
 	linkconv($(@))
 
