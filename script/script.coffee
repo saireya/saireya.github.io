@@ -11,12 +11,12 @@ replaceArray = (s, re) ->
 sanitize   = (s) -> replaceArray(s, {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'})
 unsanitize = (s) -> replaceArray(s, {'&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"'})
 
-loadText = ($o, file) ->
+loadText = (o, file) ->
 	fetch(file)
 	.then (r) ->
 		r.text()
 	.then (text) ->
-		$o.append(sanitize(text))
+		o.append(sanitize(text))
 
 # URN -> URL
 # ISBN, DOI, CiNii
@@ -182,7 +182,7 @@ $ ->
 		$tb = $(@)
 		if $tb.data("src")
 			$.when(
-				loadText($tb, dir + $tb.data("src"))
+				loadText(@, dir + $tb.data("src"))
 			).then ->
 				# CSVでは引用符が現れうる。
 				csv2html($tb)
@@ -191,7 +191,7 @@ $ ->
 			csv2html($tb, "&", "")
 
 	# include TeX macro file.
-	loadText($("#macro"), "../TeX/mymacro.tex")
+	loadText(document.getElementById("macro"), "../TeX/mymacro.tex")
 
 	Reveal.initialize(
 		history: true
