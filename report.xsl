@@ -3,7 +3,7 @@
  <xsl:import href="style.xsl" />
 
  <xsl:template name="head-module">
-  <script src="script/jquery.toc.js" async="async" />
+  <!--<script src="script/jquery.toc.js" async="async" />-->
   <script type="text/x-mathjax-config">
      MathJax.Hub.Config({
        messageStyle: "none",
