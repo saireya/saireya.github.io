@@ -11,10 +11,12 @@ replaceArray = (s, re) ->
 sanitize   = (s) -> replaceArray(s, {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'})
 unsanitize = (s) -> replaceArray(s, {'&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"'})
 
-loadText = (o, file) ->
-	# MIMEを指定しなければ、XMLを読み込もうとしてしまう
-	$.ajax(file, {"mimeType": "text/plain"})
-		.done (text) -> o.append(sanitize(text))
+loadText = ($o, file) ->
+	fetch(file)
+	.then (r) ->
+		r.text()
+	.then (text) ->
+		$o.append(sanitize(text))
 
 # URN -> URL
 # ISBN, DOI, CiNii
@@ -81,20 +83,24 @@ $ ->
 	$("#title").html($("#title").text().replace("\\\\", "<br/>"))
 
 	# BibTeXML
-	$bib = $("#bib")
-	if $bib[0]
-		$.when(
-			$.ajax(dir + $bib.data("src"), {"mimeType": "text/plain"}),
-			$.ajax("bib.xsl", {"mimeType": "text/plain"})
-		).then (r1, r2) ->
-			# r1[0]がxml, r2[0]がxsl
-			xsltProc = new XSLTProcessor()
-			p = new DOMParser()
-			xsltProc.importStylesheet(p.parseFromString(r2[0], "text/xml"))
-			$resultDocument = $(xsltProc.transformToDocument(p.parseFromString(r1[0], "text/xml")))
-			$bib.replaceWith($resultDocument.find("#bib"))
-			# thenは遅延実行なので、リンクを別に変換する必要がある
-			linkconv($bib)
+	bib = document.querySelector("#bib")
+	if bib
+		fetch(dir + bib.dataset.src)
+		.then (r) ->
+			r.text()
+		.then (r1) ->
+			fetch("bib.xsl")
+			.then (r) ->
+				r.text()
+			.then (r2) ->
+				# r1[0]がxml, r2[0]がxsl
+				xsltProc = new XSLTProcessor()
+				p = new DOMParser()
+				xsltProc.importStylesheet(p.parseFromString(r2, "text/xml"))
+				resultDocument = xsltProc.transformToDocument(p.parseFromString(r1, "text/xml"))
+				bib.replaceWith(resultDocument.querySelector("#bib"))
+				# thenは遅延実行なので、リンクを別に変換する必要がある
+				# linkconv($bib)
 	# リンクを変換
 	linkconv($(@))
 
