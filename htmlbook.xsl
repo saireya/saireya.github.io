@@ -14,14 +14,14 @@
     <xsl:text>&#10;</xsl:text>
     <xsl:apply-templates/>
     <xsl:text>&#10;</xsl:text>
-    <section data-type="bibliography">
+    <section data-type="bibliography" role="doc-bibliography">
      <h1>参考文献</h1>
      <xi:include xpointer="xmlns(h=http://www.w3.org/1999/xhtml) xpointer(//h:ol)">
       <xsl:attribute name="href"><xsl:value-of select="@bib"/>.bib.html</xsl:attribute>
      </xi:include>
     </section>
     <xsl:text>&#10;</xsl:text>
-    <section data-type="index"/>
+    <section data-type="index" role="doc-index"/>
     <xsl:text>&#10;</xsl:text>
    </body>
   </html>

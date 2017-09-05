@@ -38,7 +38,7 @@
  <xsl:template name="body-footer">
   <!-- Reference -->
   <xsl:if test='@bib'>
-   <section data-type="bibliography">
+   <section data-type="bibliography" role="doc-bibliography">
     <h1>参考文献</h1>
     <xsl:call-template name="biblist"/>
    </section>
@@ -65,7 +65,7 @@
   <a class="ref" data-type="xref"><xsl:attribute name="href">#<xsl:value-of select="@n" /></xsl:attribute><xsl:value-of select="@n" /></a>
  </xsl:template>
  <xsl:template match="cite">
-  <a class="cite" data-type="xref"><xsl:attribute name="href">#cite:<xsl:value-of select="@id"/></xsl:attribute>[cite:<xsl:value-of select="@id"/>]</a>
+  <a class="cite" role="doc-biblioref" data-type="xref"><xsl:attribute name="href">#cite:<xsl:value-of select="@id"/></xsl:attribute>[cite:<xsl:value-of select="@id"/>]</a>
  </xsl:template>
 
  <xsl:template match="h | hh | hhh">

@@ -25,9 +25,9 @@
     <xsl:otherwise></xsl:otherwise>
    </xsl:choose>
   </xsl:variable>
-  <li>
+  <li role="doc-biblioentry" data-type="biblioentry">
    <xsl:attribute name="id"><xsl:value-of select="$c"/></xsl:attribute>
-   <a class="cite"><xsl:attribute name="href">#<xsl:value-of select="$c"/></xsl:attribute>[<xsl:value-of select="$c"/>]</a>
+   <a class="cite" role="doc-backlink" data-type="backlink"><xsl:attribute name="href">#<xsl:value-of select="$c"/></xsl:attribute>[<xsl:value-of select="$c"/>]</a>
    <xsl:text>&#160;</xsl:text>
    <xsl:apply-templates select='b:author'/><xsl:apply-templates select='b:editor'/>
    <xsl:choose>

@@ -77,15 +77,15 @@
 
  <xsl:template match="article">
   <xsl:apply-templates/>
-  <aside>
+  <aside role="doc-endnotes" data-type="endnotes">
    <ol class="footnotesList">
     <xsl:attribute name="id">autoFootnotes<xsl:value-of select="position() div 2 - 1"/></xsl:attribute>
    </ol>
   </aside>
  </xsl:template>
 
- <xsl:template match="hide"><span class="hide"    ><xsl:apply-templates /></span></xsl:template>
- <xsl:template match="fn"  ><span class="footnote"><xsl:apply-templates /></span></xsl:template>
+ <xsl:template match="hide"><span class="hide"><xsl:apply-templates /></span></xsl:template>
+ <xsl:template match="fn"><span class="footnote" role="doc-footnote" data-type="footnote"><xsl:apply-templates /></span></xsl:template>
 
  <xsl:template match="img">
   <figure>
@@ -193,7 +193,7 @@
 
  <xsl:template match="appendix">
   <hr class="appendix"/>
-  <aside class="content">
+  <aside class="content" role="doc-appendix" data-type="appendix">
    <xsl:apply-templates />
   </aside>
  </xsl:template>
