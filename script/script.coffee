@@ -4,6 +4,8 @@ dir = loc.substring(0, loc.lastIndexOf('/') + 1)
 
 # 文字列sを連想配列reのkey-value対応で置き換え
 replaceArray = (s, re) ->
+	if ! s
+		s
 	for k of re
 		s = s.replace(RegExp(k, "ig"), re[k])
 	s
