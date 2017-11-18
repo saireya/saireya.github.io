@@ -21,7 +21,7 @@ loadText = (o, file) ->
 # URN -> URL
 # ISBN, DOI, CiNii
 linkconv = ($x) ->
-	$x.find("a").attr "href", (i, v) ->
+	$x.find("a[href]").attr "href", (i, v) ->
 		replaceArray v,
 			"^urn:isbn:": "http://www.amazon.co.jp/o/ASIN/",
 			"^doi:":      "https://doi.org/",

@@ -54,8 +54,8 @@
    </head>
    <xsl:text>&#10;</xsl:text>
    <body data-type="book">
-    <xsl:text>&#10;</xsl:text>
     <xsl:call-template name="body-header" />
+    <xsl:text>&#10;</xsl:text>
     <xsl:apply-templates/>
     <xsl:call-template name="body-footer" />
     <section data-type="index"/>
