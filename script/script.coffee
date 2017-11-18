@@ -4,10 +4,9 @@ dir = loc.substring(0, loc.lastIndexOf('/') + 1)
 
 # 文字列sを連想配列reのkey-value対応で置き換え
 replaceArray = (s, re) ->
-	if ! s
-		s
-	for k of re
-		s = s.replace(RegExp(k, "ig"), re[k])
+	if s
+		for k of re
+			s = s.replace(RegExp(k, "ig"), re[k])
 	s
 
 sanitize   = (s) -> replaceArray(s, {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'})
@@ -22,8 +21,8 @@ loadText = (o, file) ->
 
 # URN -> URL
 # ISBN, DOI, CiNii
-linkconv = ($x) ->
-	$x.find("a[href]").attr "href", (i, v) ->
+linkconv = (x) ->
+	$(x).find("a").attr "href", (i, v) ->
 		replaceArray v,
 			"^urn:isbn:": "http://www.amazon.co.jp/o/ASIN/",
 			"^doi:":      "https://doi.org/",
@@ -108,9 +107,9 @@ $ ->
 				resultDocument = xsltProc.transformToDocument(p.parseFromString(r1, "text/xml"))
 				bib.replaceWith(resultDocument.getElementById("bib"))
 				# thenは遅延実行なので、リンクを別に変換する必要がある
-				linkconv_v(bib)
+				linkconv(bib)
 	# リンクを変換
-	linkconv($(@))
+	linkconv(@)
 
 	# popup tooltip
 	$(".footnoteLink, .cite, a[href^='#']").attr "title", -> $(@).attr("href")
