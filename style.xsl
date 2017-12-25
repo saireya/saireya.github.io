@@ -195,7 +195,7 @@
   </xsl:if>
   <xsl:if test="@en">
    <xsl:text>(</xsl:text>
-   <dfn><xsl:value-of select="@en"/></dfn>
+   <dfn lang="en"><xsl:value-of select="@en"/></dfn>
    <a data-type="indexterm"><xsl:attribute name="data-primary"><xsl:value-of select="@en"/></xsl:attribute></a>
    <xsl:text>)</xsl:text>
   </xsl:if>
