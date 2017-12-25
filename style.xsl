@@ -178,6 +178,10 @@
   </xsl:element>
  </xsl:template>
  <xsl:template match="alert">
+  <strong><xsl:apply-templates /></strong>
+  <a data-type="indexterm"><xsl:attribute name="data-primary"><xsl:apply-templates /></xsl:attribute></a>
+ </xsl:template>
+ <xsl:template match="dfn">
   <dfn><xsl:apply-templates /></dfn>
   <a data-type="indexterm"><xsl:attribute name="data-primary"><xsl:apply-templates /></xsl:attribute></a>
   <xsl:if test="@abbr">
