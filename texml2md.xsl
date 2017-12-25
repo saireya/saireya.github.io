@@ -67,6 +67,13 @@
   <xsl:apply-templates />
   <xsl:text>** </xsl:text>
  </xsl:template>
+ <xsl:template match="dfn">
+  <xsl:text> **</xsl:text>
+  <xsl:apply-templates />
+  <xsl:text>** </xsl:text>
+  <xsl:if test="@abbr"><xsl:text>(**</xsl:text><xsl:value-of select="@abbr"/><xsl:text>**)</xsl:text></xsl:if>
+  <xsl:if test="@en"><xsl:text>(**</xsl:text><xsl:value-of select="@en"/><xsl:text>**)</xsl:text></xsl:if>
+ </xsl:template>
 
  <!-- heading -->
  <xsl:template name="heading">

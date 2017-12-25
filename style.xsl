@@ -178,10 +178,23 @@
   </xsl:element>
  </xsl:template>
  <xsl:template match="alert">
-  <strong><xsl:apply-templates /></strong>
-  <a data-type="indexterm">
-   <xsl:attribute name="data-primary"><xsl:apply-templates /></xsl:attribute>
-  </a>
+  <dfn><xsl:apply-templates /></dfn>
+  <a data-type="indexterm"><xsl:attribute name="data-primary"><xsl:apply-templates /></xsl:attribute></a>
+  <xsl:if test="@abbr">
+   <xsl:text>(</xsl:text>
+   <abbr>
+    <xsl:attribute name="title"><xsl:apply-templates /></xsl:attribute>
+    <xsl:value-of select="@abbr"/>
+   </abbr>
+   <a data-type="indexterm"><xsl:attribute name="data-primary"><xsl:value-of select="@abbr"/></xsl:attribute></a>
+   <xsl:text>)</xsl:text>
+  </xsl:if>
+  <xsl:if test="@en">
+   <xsl:text>(</xsl:text>
+   <dfn><xsl:value-of select="@en"/></dfn>
+   <a data-type="indexterm"><xsl:attribute name="data-primary"><xsl:value-of select="@en"/></xsl:attribute></a>
+   <xsl:text>)</xsl:text>
+  </xsl:if>
  </xsl:template>
 
  <xsl:template match="s">
