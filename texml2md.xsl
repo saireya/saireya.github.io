@@ -62,7 +62,7 @@
   <xsl:text>* </xsl:text>
  </xsl:template>
 
- <xsl:template match="alert">
+ <xsl:template match="alert | strong">
   <xsl:text> **</xsl:text>
   <xsl:apply-templates />
   <xsl:text>** </xsl:text>
