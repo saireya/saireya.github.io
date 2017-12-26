@@ -182,7 +182,10 @@
   <a data-type="indexterm"><xsl:attribute name="data-primary"><xsl:apply-templates /></xsl:attribute></a>
  </xsl:template>
  <xsl:template match="dfn">
-  <dfn><xsl:apply-templates /></dfn>
+  <xsl:choose>
+   <xsl:when test="@strong=0"><dfn><xsl:apply-templates /></dfn></xsl:when>
+   <xsl:otherwise><strong><dfn><xsl:apply-templates /></dfn></strong></xsl:otherwise>
+  </xsl:choose>
   <a data-type="indexterm"><xsl:attribute name="data-primary"><xsl:apply-templates /></xsl:attribute></a>
   <xsl:if test="@abbr">
    <xsl:text>(</xsl:text>
@@ -195,7 +198,10 @@
   </xsl:if>
   <xsl:if test="@en">
    <xsl:text>(</xsl:text>
-   <dfn lang="en"><xsl:value-of select="@en"/></dfn>
+  <xsl:choose>
+   <xsl:when test="@strong=0"><dfn lang="en"><xsl:value-of select="@en"/></dfn></xsl:when>
+   <xsl:otherwise><strong><dfn lang="en"><xsl:value-of select="@en"/></dfn></strong></xsl:otherwise>
+  </xsl:choose>
    <a data-type="indexterm"><xsl:attribute name="data-primary"><xsl:value-of select="@en"/></xsl:attribute></a>
    <xsl:text>)</xsl:text>
   </xsl:if>
