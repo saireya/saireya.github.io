@@ -68,11 +68,25 @@
   <xsl:text>** </xsl:text>
  </xsl:template>
  <xsl:template match="dfn">
-  <xsl:text> **</xsl:text>
+  <xsl:variable name="mark">
+   <xsl:choose>
+    <xsl:when test="@strong=0">*</xsl:when>
+    <xsl:otherwise>**</xsl:otherwise>
+   </xsl:choose>
+  </xsl:variable>
+  <xsl:text> </xsl:text><xsl:value-of select="$mark"/>
   <xsl:apply-templates />
-  <xsl:text>** </xsl:text>
-  <xsl:if test="@abbr"><xsl:text>(**</xsl:text><xsl:value-of select="@abbr"/><xsl:text>**)</xsl:text></xsl:if>
-  <xsl:if test="@en"><xsl:text>(**</xsl:text><xsl:value-of select="@en"/><xsl:text>**)</xsl:text></xsl:if>
+  <xsl:value-of select="$mark"/><xsl:text> </xsl:text>
+  <xsl:if test="@abbr">
+   <xsl:text>(</xsl:text><xsl:value-of select="$mark"/>
+   <xsl:value-of select="@abbr"/>
+   <xsl:value-of select="$mark"/><xsl:text>)</xsl:text>
+  </xsl:if>
+  <xsl:if test="@en">
+   <xsl:text>(</xsl:text><xsl:value-of select="$mark"/>
+   <xsl:value-of select="@en"/>
+   <xsl:value-of select="$mark"/><xsl:text>)</xsl:text>
+  </xsl:if>
  </xsl:template>
 
  <!-- heading -->
