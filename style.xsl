@@ -141,9 +141,9 @@
   <pre><samp><xsl:apply-templates /></samp></pre>
  </xsl:template>
 
- <xsl:template match="ins | del">
+ <xsl:template match="ins | del | q">
   <xsl:element name="{name()}"><xsl:apply-templates /></xsl:element>
-  <time><xsl:value-of select="@datetime"/></time>
+  <xsl:if test="@datetime"><time><xsl:value-of select="@datetime"/></time></xsl:if>
  </xsl:template>
 
  <xsl:template match="blockquote">
