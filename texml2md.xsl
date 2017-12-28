@@ -96,27 +96,28 @@
  <!-- heading -->
  <xsl:template name="heading">
   <xsl:param name="level"/>
-  <xsl:text>&#10;</xsl:text>
   <xsl:value-of select="$level"/>
-  <xsl:text>## </xsl:text>
+  <xsl:text># </xsl:text>
   <xsl:value-of select="@h"/>
-  <xsl:text>&#10;</xsl:text>
+  <xsl:text>&#10;&#10;</xsl:text>
   <xsl:apply-templates/>
  </xsl:template>
 
  <xsl:template match="article/s | article/multicols/s | appendix/s">
-  <xsl:call-template name="heading"/>
- </xsl:template>
-
- <xsl:template match="article/s/s | article/multicols/s/s | appendix/s/s">
   <xsl:call-template name="heading">
    <xsl:with-param name="level">#</xsl:with-param>
   </xsl:call-template>
  </xsl:template>
 
- <xsl:template match="article/s/s/s | article/multicols/s/s/s | appendix/s/s/s">
+ <xsl:template match="article/s/s | article/multicols/s/s | appendix/s/s">
   <xsl:call-template name="heading">
    <xsl:with-param name="level">##</xsl:with-param>
+  </xsl:call-template>
+ </xsl:template>
+
+ <xsl:template match="article/s/s/s | article/multicols/s/s/s | appendix/s/s/s">
+  <xsl:call-template name="heading">
+   <xsl:with-param name="level">###</xsl:with-param>
   </xsl:call-template>
  </xsl:template>
 
