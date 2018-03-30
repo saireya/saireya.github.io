@@ -31,8 +31,8 @@ h1 {
 	padding: 0;
 }
 
-.head(@angle: 0, @l: 0.8) {
-	@base: hsl(120 * (@angle + 1), 1, @l);
+.head(@s: 0) {
+	@base: hsl(120 * @s, 1, 0.8);
 	.grad(lighten(@base, 15%));
 	border-color: @base;
 }
@@ -40,23 +40,23 @@ h1 {
 h1 {
 	border: @borderWidth solid;
 	margin: 5px -1%;
-	.head(1);
+	.head(2);
 }
 
 section > h1 {
-	.head(2);
+	.head(0);
 	counter-reset:  subsection;
 	counter-increment: section;
 }
 
 section > section > h1 {
-	.head;
+	.head(1);
 	counter-reset:  subsubsection;
 	counter-increment: subsection;
 }
 
 section > section > section > h1 {
-	.head(2.5);
+	.head(0.5);
 	counter-increment: subsubsection;
 }
 
