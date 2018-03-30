@@ -87,17 +87,15 @@ a.footnoteBackref:extend(a.footnoteLink)
 	padding-right: 0.25em;
 }
 
-.sublink(@h:300)
+.sublink(@s: 0)
 {
-	@base: hsl(@h, 1, 0.5);
-	color: @base;
-	border-bottom-color: @base;
+	color: hsl(@s * 120, 1, .75);
 	vertical-align: bottom;
 	font-size: small;
 }
 
-a.cite { .sublink(200); }
-a.ref  { .sublink(160); }
+a.cite { .sublink(2); }
+a.ref  { .sublink(0); }
 
 .person
 {

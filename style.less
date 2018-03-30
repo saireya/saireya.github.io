@@ -31,9 +31,7 @@ h1
 {
 	font: inherit;
 	border-radius: @r;
-	border-bottom: @borderWidth dotted;
 	padding: 0;
-	//box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
 .head(@angle: 0, @l: 0.8)
@@ -47,13 +45,7 @@ h1
 {
 	border: @borderWidth solid;
 	margin: 5px -1%;
-	.head;
-}
-
-h1
-{
 	.head(1);
-	border-bottom-style: dashed;
 }
 
 section > h1
@@ -83,21 +75,32 @@ p
 	text-align: justify;
 	text-indent: 1em;
 }
-
-
-// Link
-.link(@h:300)
+/* emphasizing */
+.highlight(@s: 0)
 {
-	@base: hsl(@h, 1, 0.5);
+	@base: hsl(@s * 120, 1, .25);
 	color: @base;
-	border-bottom-color: @base;
+	background-color: fade(@base, 5%);
+	font-style: normal;
+}
+strong, strong > dfn {
+	.highlight(0);
+}
+dfn {
+	.highlight(1);
+}
+em {
+	.highlight(2);
 }
 
-a
-{
-	border-bottom: 1px dotted;
+// Link
+.link(@s: 0) {
+	color: hsl(@s * 120, 1, .75);
+}
+
+a {
 	.link;
-	text-decoration: none;
+	text-decoration: underline dotted;
 }
 
 // Figure
