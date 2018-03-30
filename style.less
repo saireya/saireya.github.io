@@ -25,7 +25,7 @@ body {
 }
 
 // Heading
-h1 {
+h1, h2 {
 	font: inherit;
 	border-radius: @r;
 	padding: 0;
@@ -42,7 +42,6 @@ h1 {
 	margin: 5px -1%;
 	.head(2);
 }
-
 section > h1 {
 	.head(0);
 	counter-reset:  subsection;
@@ -55,7 +54,8 @@ section > section > h1 {
 	counter-increment: subsection;
 }
 
-section > section > section > h1 {
+section > section > section > h1,
+section > section > section > h2 {
 	.head(0.5);
 	counter-increment: subsubsection;
 }
