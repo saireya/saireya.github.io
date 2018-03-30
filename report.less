@@ -2,30 +2,25 @@
  * TeX Style
  **************************************************/
 
-.MathJax_MathML
-{
+.MathJax_MathML {
 	// to prevent overlapping with following text
 	margin-right: 4px !important;
 }
 
 // custom item marker
-li[data-mark]
-{
+li[data-mark] {
 	list-style: none;
-	&:before
-	{
+	&:before {
 		margin: auto 0.5em auto -1em;
 		content: attr(data-mark);
 	}
 }
 
-ol.cases
-{
+ol.cases {
 	list-style-type: none;
 	counter-reset: item;
 
-	& > li:before
-	{
+	& > li:before {
 		content: "[" counter(item) "]";
 		counter-increment: item;
 		padding-right: 10px;
@@ -41,19 +36,16 @@ section > section           > h1.num:before {  .ssecnum; }
 section > section > section > h1.num:before { .sssecnum; }
 
 @bg: white;
-.grad3(@center)
-{
+.grad3(@center) {
 	background-image: -moz-linear-gradient(left, @bg, @center, @bg);
 }
 
-hr
-{
+hr {
 	border: 0;
 	height: 1px;
 	.grad3(springgreen);
 
-	&.appendix
-	{
+	&.appendix {
 		counter-reset: section;
 		.grad3(steelblue);
 	}
@@ -64,31 +56,26 @@ aside.content > section > section           > h1.num:before {  .ssecnum(upper-la
 aside.content > section > section > section > h1.num:before { .sssecnum(upper-latin); }
 
 // Footnote
-ol.footnotesList, #bib
-{
+ol.footnotesList, #bib {
 	font-size: 0.8em;
 	padding-top: 5px;
 
-	& > li
-	{
+	& > li {
 		text-indent: -1.5em;
 		padding-left: 1.5em;
 		vertical-align: top;
 	}
 }
 
-a.footnoteLink
-{
+a.footnoteLink {
 	border-width: 0;
 }
 
-a.footnoteBackref:extend(a.footnoteLink)
-{
+a.footnoteBackref:extend(a.footnoteLink) {
 	padding-right: 0.25em;
 }
 
-.sublink(@s: 0)
-{
+.sublink(@s: 0) {
 	color: hsl(@s * 120, 1, .75);
 	vertical-align: bottom;
 	font-size: small;
@@ -97,8 +84,7 @@ a.footnoteBackref:extend(a.footnoteLink)
 a.cite { .sublink(2); }
 a.ref  { .sublink(0); }
 
-.person
-{
+.person {
 	@r: 7px;
 	@bg: #f0fff4;
 	@fg: black;
@@ -108,47 +94,39 @@ a.ref  { .sublink(0); }
 	background-color: @bg;
 }
 
-.grad(@left)
-{
+.grad(@left) {
 	background-image: linear-gradient(to right, @left, lighten(@left, 40%));
 }
 
 // 0: blue, 1: red, 2; green
-.blockcolor(@angle: 0)
-{
+.blockcolor(@angle: 0) {
 	@base: hsl(120 * (@angle - 1), 1, 40%);
 	.grad(lighten(@base, 58%));
 
-	ul > li:before
-	{
+	ul > li:before {
 		color: @base;
 	}
-	ol > li:before
-	{
+	ol > li:before {
 		color: white;
 		background-color: @base;
 	}
 
-	h6
-	{
+	h6 {
 		.grad(@base);
 
-		& when (@angle = 0)
-		{
+		& when (@angle = 0) {
 			// 青でなく黒にする
 			.grad(#444);
 		}
 
-		& when (@angle = 2)
-		{
+		& when (@angle = 2) {
 			// 緑は明るすぎるので暗くする
 			.grad(hsl(120, 1, 20%));
 		}
 	}
 }
 
-.block
-{
+.block {
 	@r: 7px;
 	margin: 2% 0.5% !important;
 	padding: 0 2px !important;
@@ -159,8 +137,7 @@ a.ref  { .sublink(0); }
 	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 
 	// ブロックの見出し
-	h6
-	{
+	h6 {
 		border-radius: @r @r 0 0;
 		margin: 0 -2px 1% -2px;
 		text-indent: 0.5em;
@@ -179,18 +156,15 @@ a.ref  { .sublink(0); }
 
 
 // plan
-div.bb
-{
+div.bb {
 	border: 1px inset #00ff00;
 	background-color: #eeffee;
 }
 
-.multicols
-{
+.multicols {
 	display: flex;
 
-	& > div
-	{
+	& > div {
 		margin: auto 5px !important;
 	}
 }
