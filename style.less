@@ -11,8 +11,7 @@
 @borderWidth: 1px;
 @borderStyle: solid;
 
-body
-{
+body {
 	padding: 2%;
 	margin: 0 3% 0 3%;
 	font-family: sans-serif;
@@ -21,63 +20,54 @@ body
 	background-color: @bg;
 }
 
-.grad(@left)
-{
+.grad(@left) {
 	background-image: -moz-linear-gradient(left, @left, @bg);
 }
 
 // Heading
-h1
-{
+h1 {
 	font: inherit;
 	border-radius: @r;
 	padding: 0;
 }
 
-.head(@angle: 0, @l: 0.8)
-{
+.head(@angle: 0, @l: 0.8) {
 	@base: hsl(120 * (@angle + 1), 1, @l);
 	.grad(lighten(@base, 15%));
 	border-color: @base;
 }
 
-h1
-{
+h1 {
 	border: @borderWidth solid;
 	margin: 5px -1%;
 	.head(1);
 }
 
-section > h1
-{
+section > h1 {
 	.head(2);
 	counter-reset:  subsection;
 	counter-increment: section;
 }
 
-section > section > h1
-{
+section > section > h1 {
 	.head;
 	counter-reset:  subsubsection;
 	counter-increment: subsection;
 }
 
-section > section > section > h1
-{
+section > section > section > h1 {
 	.head(2.5);
 	counter-increment: subsubsection;
 }
 
 // Text
-p
-{
+p {
 	margin: 4px auto;
 	text-align: justify;
 	text-indent: 1em;
 }
 /* emphasizing */
-.highlight(@s: 0)
-{
+.highlight(@s: 0) {
 	@base: hsl(@s * 120, 1, .25);
 	color: @base;
 	background-color: fade(@base, 5%);
@@ -104,22 +94,19 @@ a {
 }
 
 // Figure
-figure
-{
+figure {
 	display: block;
 	margin: auto;
 	text-align: center;
 }
 
-figcaption
-{
+figcaption {
 	font-size: smaller;
 }
 
 
 // Object
-img, object
-{
+img, object {
 	display: inline;
 	max-width: 100%;
 }
@@ -129,8 +116,7 @@ img, object
 // http://web-dou.com/sample/dl.html
 @headBColor: #def;
 
-dl
-{
+dl {
 	@dtWidth: 100px;
 	margin: 5px;
 	border: @borderWidth @borderStyle @borderColor;
@@ -138,8 +124,7 @@ dl
 	border-top-width: 0;
 	background-color: @headBColor;
 
-	dt
-	{
+	dt {
 		float: left;
 		clear: left;
 		width: @dtWidth;
@@ -149,8 +134,7 @@ dl
 		font-family: sans-serif;
 	}
 
-	dd
-	{
+	dd {
 		padding: 5px;
 		border-top: @borderWidth @borderStyle @borderColor;
 		border-top-right-radius: @r;
@@ -159,33 +143,28 @@ dl
 	}
 }
 
-ul, ol
-{
+ul, ol {
 	margin: 0.5% auto;
 }
 
 // Table
-table
-{
+table {
 	margin: auto;
 	background-color: @bg;
 
-	thead, tfoot, th
-	{
+	thead, tfoot, th {
 		background-color: @headBColor;
 		color: @fg;
 		text-align: center;
 	}
 
-	th
-	{
+	th {
 		font-style: normal;
 		font-family: sans-serif;
 		border-radius: @r;
 	}
 
-	tbody > tr
-	{
+	tbody > tr {
 		@bg: #fffaff;
 		color: @fg;
 		&:nth-child(odd)  { background-color: darken(@bg, 2.5%); }
