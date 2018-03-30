@@ -98,9 +98,8 @@ a.ref  { .sublink(0); }
 	background-image: linear-gradient(to right, @left, lighten(@left, 40%));
 }
 
-// 0: blue, 1: red, 2; green
 .blockcolor(@angle: 0) {
-	@base: hsl(120 * (@angle - 1), 1, 40%);
+	@base: hsl(120 * @angle, 1, 40%);
 	.grad(lighten(@base, 58%));
 
 	ul > li:before {
@@ -114,12 +113,12 @@ a.ref  { .sublink(0); }
 	h6 {
 		.grad(@base);
 
-		& when (@angle = 0) {
+		& when (@angle = 2) {
 			// 青でなく黒にする
 			.grad(#444);
 		}
 
-		& when (@angle = 2) {
+		& when (@angle = 1) {
 			// 緑は明るすぎるので暗くする
 			.grad(hsl(120, 1, 20%));
 		}
@@ -149,9 +148,9 @@ a.ref  { .sublink(0); }
 		text-transform: none !important;
 	}
 
-	.blockcolor;
-	&.alert   { .blockcolor(1); }
-	&.example { .blockcolor(2); }
+	.blockcolor(2);
+	&.alert   { .blockcolor(0); }
+	&.example { .blockcolor(1); }
 }
 
 
