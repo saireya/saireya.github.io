@@ -11,9 +11,15 @@
 @borderWidth: 1px;
 @borderStyle: solid;
 
-body {
-	padding: 2%;
-	margin: 0 3%;
+@page {
+	size: A4;
+	margin: 0;
+}
+
+html {
+	max-width: 210mm; // A4
+	margin: auto;
+//	font-size: 11pt;
 	font-family: sans-serif;
 	counter-reset: section;
 	color: @fg;
