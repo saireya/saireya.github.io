@@ -16,7 +16,6 @@
  </xsl:template>
 
  <xsl:template match="b:entry/*">
-  <xsl:variable name="c">cite:<xsl:value-of select="../@id"/></xsl:variable>
   <xsl:variable name="u">
    <xsl:choose>
     <xsl:when test="b:url"><xsl:value-of select="b:url"/></xsl:when>
@@ -26,8 +25,8 @@
    </xsl:choose>
   </xsl:variable>
   <li role="doc-biblioentry" data-type="biblioentry">
-   <xsl:attribute name="id"><xsl:value-of select="$c"/></xsl:attribute>
-   <a class="cite" role="doc-backlink" data-type="backlink"><xsl:attribute name="href">#<xsl:value-of select="$c"/></xsl:attribute>[<xsl:value-of select="$c"/>]</a>
+   <xsl:attribute name="id">cite:<xsl:value-of select="../@id"/></xsl:attribute>
+   <a role="doc-backlink" data-type="backlink"><xsl:attribute name="href">#cite:<xsl:value-of select="../@id"/></xsl:attribute><xsl:value-of select="../@id"/></a>
    <xsl:text>&#160;</xsl:text>
    <xsl:apply-templates select='b:author'/><xsl:apply-templates select='b:editor'/>
    <xsl:choose>

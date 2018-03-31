@@ -81,8 +81,15 @@ a.footnoteBackref:extend(a.footnoteLink) {
 	font-size: small;
 }
 
-a.cite { .sublink(2); }
-a.ref  { .sublink(0); }
+a[data-type="xref"] {
+	.sublink(0);
+}
+a[role="doc-biblioref"], a[data-type="backlink"] {
+	.sublink(2);
+	&::before {
+		content: "🔗";
+	}
+}
 
 .person {
 	@r: 7px;
