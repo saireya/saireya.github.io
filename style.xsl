@@ -111,7 +111,8 @@
     <xsl:if test="@n">
      <a class="ref">
       <xsl:attribute name="href">#<xsl:value-of select="@n"/></xsl:attribute>
-      <xsl:value-of select="@n"/>
+	  <xsl:text>図</xsl:text>
+      <xsl:number level="any"/>
      </a>
      <xsl:text>: </xsl:text>
     </xsl:if>

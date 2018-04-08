@@ -58,11 +58,14 @@
  </xsl:template>
 
  <!-- reference -->
+ <xsl:template match="img" mode="ref"><xsl:number level="any"/></xsl:template>
  <xsl:template match="l">
   <a><xsl:attribute name="id"><xsl:value-of select="@n" /></xsl:attribute></a>
  </xsl:template>
  <xsl:template match="r">
-  <a class="ref" data-type="xref"><xsl:attribute name="href">#<xsl:value-of select="@n" /></xsl:attribute><xsl:value-of select="@n" /></a>
+  <a class="ref" data-type="xref"><xsl:attribute name="href">#<xsl:value-of select="@n" /></xsl:attribute>
+   <xsl:apply-templates select="//img[@n=current()/@n]" mode="ref"/>
+  </a>
  </xsl:template>
  <xsl:template match="cite">
   <a class="cite" role="doc-biblioref" data-type="xref"><xsl:attribute name="href">#cite:<xsl:value-of select="@id"/></xsl:attribute><xsl:value-of select="@id"/></a>
