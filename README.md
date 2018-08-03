@@ -1,5 +1,9 @@
 # saireya.github.io
-[全高情研2017発表ポスター・資料など](https://saireya.gitbooks.io/thesis/content/2017zen-copyright/)
+
+## 全高情研2018発表ポスター・資料
+
+- [ポスター](https://www.scribd.com/doc/385336249)
+- [補助資料](https://github.com/saireya/information-and-system/releases/download/draft3/resume.pdf)
 
 ## [GitBook](https://www.gitbook.com/@saireya)
 
