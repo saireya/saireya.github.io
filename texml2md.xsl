@@ -98,7 +98,15 @@
   <xsl:param name="level"/>
   <xsl:value-of select="$level"/>
   <xsl:text># </xsl:text>
+  <xsl:if test="@n">
+   <xsl:text>[</xsl:text>
+  </xsl:if>
   <xsl:value-of select="@h"/>
+  <xsl:if test="@n">
+   <xsl:text>](#</xsl:text>
+    <xsl:value-of select="@n"/>
+   <xsl:text>)</xsl:text>
+  </xsl:if>
   <xsl:text>&#10;&#10;</xsl:text>
   <xsl:apply-templates/>
  </xsl:template>
@@ -119,6 +127,14 @@
   <xsl:call-template name="heading">
    <xsl:with-param name="level">###</xsl:with-param>
   </xsl:call-template>
+ </xsl:template>
+
+ <xsl:template match="r">
+  <xsl:text>[</xsl:text>
+  <xsl:value-of select="@n"/>
+  <xsl:text>](#</xsl:text>
+  <xsl:value-of select="@n"/>
+  <xsl:text>)</xsl:text>
  </xsl:template>
 
  <xsl:template match="cite">
