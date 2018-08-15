@@ -81,8 +81,8 @@
 
  <xsl:template match="s">
   <section>
+   <xsl:if test="@n"><xsl:attribute name="id"><xsl:value-of select="@n"/></xsl:attribute></xsl:if>
    <h1 class="num">
-    <xsl:if test="@n"><xsl:attribute name="id"><xsl:value-of select="@n"/></xsl:attribute></xsl:if>
     <xsl:value-of select="@h"/>
    </h1>
    <xsl:text>&#10;</xsl:text>
