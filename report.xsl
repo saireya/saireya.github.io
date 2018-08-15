@@ -58,9 +58,10 @@
  </xsl:template>
 
  <!-- reference -->
- <xsl:template match="img" mode="ref"><xsl:number level="any"/></xsl:template>
- <xsl:template match="s"   mode="ref"><xsl:number level="single"   count="s"/></xsl:template>
- <xsl:template match="s/s" mode="ref"><xsl:number level="multiple" count="s"/></xsl:template>
+ <xsl:template match="img"   mode="ref"><xsl:number level="any"/></xsl:template>
+ <xsl:template match="s"     mode="ref"><xsl:number level="single"   count="s"/></xsl:template>
+ <xsl:template match="s/s"   mode="ref"><xsl:number level="multiple" count="s"/></xsl:template>
+ <xsl:template match="s/s/s" mode="ref"><xsl:number level="multiple" count="s"/></xsl:template>
  <xsl:template match="l">
   <a><xsl:attribute name="id"><xsl:value-of select="@n" /></xsl:attribute></a>
  </xsl:template>
@@ -128,7 +129,7 @@
  <xsl:template match="article/s/s/s | article/multicols/s/s/s | appendix/s/s/s">
   <xsl:call-template name="heading">
    <xsl:with-param name="type">sect2</xsl:with-param>
-   <xsl:with-param name="level">2</xsl:with-param>
+   <xsl:with-param name="level">1</xsl:with-param>
   </xsl:call-template>
  </xsl:template>
 
