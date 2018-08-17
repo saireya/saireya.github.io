@@ -102,13 +102,7 @@ a {
 }
 
 .person {
-	@r: 7px;
-	@bg: #f0fff4;
-	@fg: black;
-	color: @fg;
-	border-radius: @r;
-	border: 1px solid darken(@bg, 50%);
-	background-color: @bg;
+	color: spin(@themeColor, 120);
 }
 
 .grad(@left) {
