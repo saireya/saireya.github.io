@@ -2,6 +2,8 @@
  * TeX Style
  **************************************************/
 
+@themeColor: hsl(210, 1, .3);
+
 .MathJax_MathML {
 	// to prevent overlapping with following text
 	margin-right: 4px !important;
@@ -77,19 +79,23 @@ a.footnoteBackref:extend(a.footnoteLink) {
 }
 
 .sublink(@s: 0) {
-	color: hsl(@s * 120, 1, .75);
+	@base: spin(@themeColor, @s * 120);
+	color: @base;
 	vertical-align: bottom;
 	font-size: small;
 }
 
 a[data-type="xref"] {
-	.sublink(0);
+	.sublink(1);
 }
 a[role="doc-biblioref"], a[data-type="backlink"] {
-	.sublink(2);
+	.sublink(0);
 	&::before {
 		content: "🔗";
 	}
+}
+a {
+	.sublink(2);
 }
 
 .person {
