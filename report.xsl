@@ -129,7 +129,7 @@
  <xsl:template match="article/s/s/s | article/multicols/s/s/s | appendix/s/s/s">
   <xsl:call-template name="heading">
    <xsl:with-param name="type">sect2</xsl:with-param>
-   <xsl:with-param name="level">1</xsl:with-param>
+   <xsl:with-param name="level">2</xsl:with-param>
   </xsl:call-template>
  </xsl:template>
 
