@@ -43,11 +43,16 @@ html {
 
 // Heading
 h1, h2 {
-	font: inherit;
-	font-weight: bolder;
+	font: normal bolder 100% sans-serif;
 	margin: 5px -1%;
 	padding: 5px 10px;
 	border-left: 7px @borderStyle @themeColor;
+}
+
+body > h1 {
+	border-left: 0;
+	text-align: center;
+	text-decoration: underline @borderStyle @themeColor;
 }
 
 section > h1 {
@@ -86,7 +91,7 @@ p {
 	@base: spin(@themeColor, @s * 120);
 	color: @base;
 	background: linear-gradient(transparent 60%, fade(@base, 5%) 60%);
-	font-style: normal;
+	font: normal bolder 100% sans-serif;
 }
 strong, strong > dfn {
 	.highlight(1);
