@@ -13,17 +13,29 @@
 @borderWidth: 1px;
 @borderStyle: solid;
 
-@page {
-	size: A4;
-	margin: 0;
+@media screen {
+	html {
+		font-family: sans-serif;
+	}
+}
+@media print {
+	@page {
+		size: A4 portrait;
+		margin: 5mm;
+	}
+	html {
+		font-family: serif;
+	}
+	body > section {
+		break-after: page;
+	}
 }
 
 html {
 	max-width: 210mm; // A4
 	margin: auto;
 	padding: 1%;
-//	font-size: 11pt;
-	font-family: sans-serif;
+	font-size: 10.5pt;
 	counter-reset: section;
 	color: @fg;
 	background-color: @bg;
