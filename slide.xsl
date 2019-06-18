@@ -27,7 +27,7 @@
        "HTML-CSS": {scale: 85},
      });
   </script>
-  <script src="MathJax/MathJax.js" />
+  <script src="/usr/share/javascript/mathjax/MathJax.js" async="async" />
  </xsl:template>
 
  <xsl:template name="body-header">

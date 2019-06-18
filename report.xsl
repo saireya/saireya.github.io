@@ -14,10 +14,11 @@
        NativeMML: {scale: 85},
      });
   </script>
-  <script src="MathJax/MathJax.js" async="async" />
+  <script src="/usr/share/javascript/mathjax/MathJax.js" async="async" />
  </xsl:template>
 
  <xsl:template name="body-header">
+  <h1><xsl:value-of select="//log/@title" /></h1>
   <div id="macro" style="display: none">
    \[
      \newcommand{\mathbfit}[1]{\boldsymbol{#1}}
