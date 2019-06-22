@@ -84,8 +84,6 @@ a.footnoteBackref:extend(a.footnoteLink) {
 .sublink(@s: 0) {
 	@base: spin(@themeColor, @s * 120);
 	color: @base;
-	vertical-align: bottom;
-	font-size: small;
 }
 
 a[data-type="xref"] {
@@ -93,6 +91,8 @@ a[data-type="xref"] {
 }
 a[role="doc-biblioref"], a[data-type="backlink"] {
 	.sublink(0);
+	vertical-align: bottom;
+	font-size: small;
 	&::before {
 		content: "🔗";
 	}
