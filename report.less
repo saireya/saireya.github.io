@@ -106,7 +106,7 @@ a {
 }
 
 .grad(@left) {
-	background-image: linear-gradient(to right, @left, lighten(@left, 40%));
+	background-color: @left;
 }
 
 .blockcolor(@angle: 0) {
@@ -144,7 +144,7 @@ a {
 	text-align:left;
 	border-radius: @r;
 	//Chromeだと印刷時に影が黒くなってしまう
-	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+	//box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 
 	// ブロックの見出し
 	h6 {
