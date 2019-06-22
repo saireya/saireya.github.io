@@ -13,9 +13,12 @@
 @borderWidth: 1px;
 @borderStyle: solid;
 
+@fontSans:  "Noto Sans CJK JP";
+@fontSerif: "Noto Serif CJK JP";
+
 @media screen {
 	html {
-		font-family: sans-serif;
+		font-family: @fontSans, sans-serif;
 	}
 }
 @media print {
@@ -24,7 +27,7 @@
 		margin: 5mm;
 	}
 	html {
-		font-family: serif;
+		font-family: @fontSerif, serif;
 	}
 	body > section {
 		break-after: page;
@@ -43,7 +46,7 @@ html {
 
 // Heading
 h1, h2 {
-	font: normal bolder 100% sans-serif;
+	font: normal bolder 100% @fontSans;
 	margin: 5px -1%;
 	padding: 5px 10px;
 	border-left: 7px @borderStyle @themeColor;
@@ -90,8 +93,8 @@ p {
 .highlight(@s: 0) {
 	@base: spin(@themeColor, @s * 120);
 	color: @base;
-	background: linear-gradient(transparent 60%, fade(@base, 5%) 60%);
-	font: normal bolder 100% sans-serif;
+	/* background: linear-gradient(transparent 60%, fade(@base, 5%) 60%); */
+	font: normal bolder 100% @fontSans;
 }
 strong, strong > dfn {
 	.highlight(1);
@@ -147,7 +150,7 @@ dl {
 		padding: 5px;
 		border-top: @borderWidth @borderStyle @borderColor;
 		border-top-left-radius: @r;
-		font-family: sans-serif;
+		font-family: @fontSans;
 	}
 
 	dd {
